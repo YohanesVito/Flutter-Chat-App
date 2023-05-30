@@ -4,6 +4,7 @@ const String tWelcomeTitle = "Connect, Chat, and Share";
 const String tWelcomeSubTitle = "Welcome to our vibrant chat community where conversations come to life!";
 const String tLogin = "Login";
 const String tRegister = "Register";
+const String tStart = "Start";
 
 
 //login screen

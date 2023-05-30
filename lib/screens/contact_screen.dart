@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/screens/chat_screen.dart';
 import 'package:flutter_chat_app/screens/profile_screen.dart';
-
-import '../constants/text_string.dart';
 import '../model/contact_model.dart';
 
 class ContactScreen extends StatefulWidget {
@@ -14,7 +12,7 @@ class ContactScreen extends StatefulWidget {
 
 class _ContactScreenState extends State<ContactScreen> {
   //navigation
-  void navigateToChatScreen(BuildContext context){
+  void navigateToChatScreen(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -23,7 +21,7 @@ class _ContactScreenState extends State<ContactScreen> {
     );
   }
 
-  void navigateToProfileScreen(BuildContext context){
+  void navigateToProfileScreen(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -31,19 +29,20 @@ class _ContactScreenState extends State<ContactScreen> {
       ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.person_rounded),
+              icon: const Icon(Icons.person_rounded),
               onPressed: () {
                 navigateToProfileScreen(context);
                 //Implement logout functionality
               }),
         ],
-        title: Text('Contact'),
+        title: const Text('Contact'),
       ),
       body: ListView.builder(
         itemCount: contacts.length,
@@ -67,7 +66,7 @@ class _ContactScreenState extends State<ContactScreen> {
                   // Handle onLongPress action here
                 },
               ),
-              Divider(
+              const Divider(
                 height: 1.0,
                 indent: 1.0,
               ),

@@ -21,7 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  void navigateToContactScreen(BuildContext context){
+  void navigateToContactScreen(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -70,12 +70,12 @@ class _LoginScreenState extends State<LoginScreen> {
         SizedBox(
           width: double.infinity,
           child: OutlinedButton.icon(
-              icon: Image(
+              icon: const Image(
                 image: AssetImage(tSignInWithGoogleImage),
                 width: 20.0,
               ),
               style: OutlinedButton.styleFrom(
-                  shape: RoundedRectangleBorder(),
+                  shape: const RoundedRectangleBorder(),
                   padding: EdgeInsets.symmetric(vertical: tButtonHeight)),
               onPressed: () {},
               label: Text(tSignInWithGoogle)),
@@ -89,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
             TextSpan(
                 text: tDontHaveAnAccount,
                 style: Theme.of(context).textTheme.bodyText1,
-                children: [
+                children: const [
                   TextSpan(text: tSignup, style: TextStyle(color: Colors.blue))
                 ]),
           ),
@@ -112,18 +112,18 @@ class _LoginScreenState extends State<LoginScreen> {
   Form LoginForm() {
     return Form(
         child: Container(
-      padding: EdgeInsets.symmetric(vertical: tFormHeight - 10),
+      padding: const EdgeInsets.symmetric(vertical: tFormHeight - 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TextFormField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.person_outline_outlined),
                 labelText: tEmail,
                 hintText: tEmail,
                 border: OutlineInputBorder()),
           ),
-          SizedBox(
+          const SizedBox(
             height: tFormHeight - 20,
           ),
           TextFormField(
@@ -132,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 prefixIcon: Icon(Icons.fingerprint),
                 labelText: tPassword,
                 hintText: tPassword,
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 suffixIcon: IconButton(
                   onPressed: _togglePasswordVisibility,
                   icon: Icon(
@@ -142,12 +142,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 )),
           ),
-          SizedBox(
+          const SizedBox(
             height: tFormHeight - 20,
           ),
           Align(
             alignment: Alignment.centerRight,
-            child: TextButton(onPressed: () {}, child: Text(tForgetPassword)),
+            child: TextButton(
+                onPressed: () {}, child: const Text(tForgetPassword)),
           ),
           SizedBox(
             width: double.infinity,
@@ -155,11 +156,11 @@ class _LoginScreenState extends State<LoginScreen> {
               onPressed: () {
                 navigateToContactScreen(context);
               },
-              child: Text(tLogin.toUpperCase()),
               style: ElevatedButton.styleFrom(
                   elevation: 0,
-                  shape: RoundedRectangleBorder(),
-                  padding: EdgeInsets.symmetric(vertical: tButtonHeight)),
+                  shape: const RoundedRectangleBorder(),
+                  padding: const EdgeInsets.symmetric(vertical: tButtonHeight)),
+              child: Text(tLogin.toUpperCase()),
             ),
           )
         ],

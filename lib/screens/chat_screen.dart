@@ -43,9 +43,9 @@ class _ChatScreenState extends State<ChatScreen> {
           onPressed: () {
             navigateToContactScreen(context);
           },
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
         ),
-        title: Text('Chat'),
+        title: const Text('Chat'),
       ),
       body: Column(
         children: [
@@ -59,10 +59,7 @@ class _ChatScreenState extends State<ChatScreen> {
               elements: messages,
               //sortir berdasarkan waktu
               groupBy: (messages) => DateTime(
-                messages.date.year,
-                messages.date.month,
-                messages.date.day
-              ),
+                  messages.date.year, messages.date.month, messages.date.day),
               //sortir berdasarkan bulan
               groupHeaderBuilder: (Message message) => SizedBox(
                 height: 40,
@@ -80,7 +77,9 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
               ),
               itemBuilder: (context, Message message) => Align(
-                alignment: message.isSentByMe ? Alignment.centerRight : Alignment.centerLeft,
+                alignment: message.isSentByMe
+                    ? Alignment.centerRight
+                    : Alignment.centerLeft,
                 child: Card(
                   elevation: 8,
                   child: Padding(
@@ -117,13 +116,13 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                 ),
                 IconButton(
-                  icon: Icon(Icons.photo),
+                  icon: const Icon(Icons.photo),
                   onPressed: () {
                     _openGallery();
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.send),
+                  icon: const Icon(Icons.send),
                   onPressed: () {
                     final text = _textController.text;
                     if (text.isNotEmpty) {
@@ -144,7 +143,6 @@ class _ChatScreenState extends State<ChatScreen> {
               ],
             ),
           )
-
         ],
       ),
     );

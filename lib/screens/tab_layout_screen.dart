@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/screens/register_screen.dart';
-
 import 'login_screen.dart';
 
 class TabLayoutScreen extends StatefulWidget {
@@ -17,15 +16,15 @@ class _TabLayoutScreenState extends State<TabLayoutScreen> {
       length: 2, // Number of tabs
       child: Scaffold(
         appBar: AppBar(
-          title: Text('ChatApp'),
-          bottom: TabBar(
+          title: const Text('ChatApp'),
+          bottom: const TabBar(
             tabs: [
               Tab(text: 'Login'),
               Tab(text: 'Register'),
             ],
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             LoginScreen(),
             RegisterScreen(),

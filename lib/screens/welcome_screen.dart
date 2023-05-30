@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants/image_strings.dart';
 import 'package:flutter_chat_app/constants/sizes.dart';
 import 'package:flutter_chat_app/constants/text_string.dart';
-import 'package:flutter_chat_app/screens/login_screen.dart';
-import 'package:flutter_chat_app/screens/main_tab_screen.dart';
 import 'package:flutter_chat_app/screens/register_screen.dart';
 import 'package:flutter_chat_app/screens/tab_layout_screen.dart';
 
@@ -15,9 +13,8 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-
   //navigation
-  void navigateToMainScreen(BuildContext context){
+  void navigateToMainScreen(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -26,7 +23,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 
-  void navigateToRegisterScreen(BuildContext context){
+  void navigateToRegisterScreen(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -35,29 +32,28 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(tDefaultSize),
+        padding: const EdgeInsets.all(tDefaultSize),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Image(
-              image: AssetImage(tWelcomeScreenImage),
+              image: const AssetImage(tWelcomeScreenImage),
               height: height * 0.6,
             ),
             Column(
               children: [
                 Text(
                   tWelcomeTitle,
-                  style: Theme.of(context).textTheme.headline3,
+                  style: Theme.of(context).textTheme.displaySmall,
                 ),
                 Text(
                   tWelcomeSubTitle,
-                  style: Theme.of(context).textTheme.bodyText1,
+                  style: Theme.of(context).textTheme.bodyLarge,
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -65,28 +61,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             Row(
               children: [
                 Expanded(
-                    child: OutlinedButton(
-                        onPressed: () {
-                          navigateToMainScreen(context);
-                        },
-                        style: OutlinedButton.styleFrom(
-                            shape: RoundedRectangleBorder(),
-                            padding:
-                            EdgeInsets.symmetric(vertical: tButtonHeight)),
-                        child: Text(tLogin.toUpperCase()))),
-                const SizedBox(
-                  width: 10.0,
-                ),
-                Expanded(
                   child: ElevatedButton(
                     onPressed: () {
                       navigateToRegisterScreen(context);
                     },
-                    child: Text(tRegister.toUpperCase()),
                     style: ElevatedButton.styleFrom(
                         elevation: 0,
-                        shape: RoundedRectangleBorder(),
-                        padding: EdgeInsets.symmetric(vertical: tButtonHeight)),
+                        shape: const RoundedRectangleBorder(),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: tButtonHeight)),
+                    child: Text(tStart.toUpperCase()),
                   ),
                 ),
               ],
@@ -97,4 +81,3 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 }
-

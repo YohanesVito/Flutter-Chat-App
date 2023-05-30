@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants/image_strings.dart';
 import 'package:flutter_chat_app/constants/sizes.dart';
-
 import '../constants/text_string.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -13,7 +11,6 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -26,64 +23,75 @@ class _RegisterScreenState extends State<RegisterScreen> {
               //Bagian Header
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Image(
-                    image: AssetImage(tRegisterScreenImage),
+                    image: const AssetImage(tRegisterScreenImage),
                     height: size.height * 0.2),
                 Text(tRegisterTitle,
                     style: Theme.of(context).textTheme.headlineLarge),
                 Text(
                   tRegisterSubtitle,
-                  style: Theme.of(context).textTheme.bodyText1,
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
               ]),
 
               //Bagian Form
               Container(
-                padding: EdgeInsets.symmetric(vertical: tFormHeight -10),
+                padding: const EdgeInsets.symmetric(vertical: tFormHeight - 10),
                 child: Form(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       TextFormField(
-                        decoration: InputDecoration(
-                          label: Text(tUsername),
-                          prefixIcon: Icon(Icons.person_outline_rounded,),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(width: 2.0,)
-                          )
-                        ),
+                        decoration: const InputDecoration(
+                            label: Text(tUsername),
+                            prefixIcon: Icon(
+                              Icons.person_outline_rounded,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                              width: 2.0,
+                            ))),
                       ),
-                      const SizedBox(height: tFormHeight-20,),
+                      const SizedBox(
+                        height: tFormHeight - 20,
+                      ),
                       TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             label: Text(tEmail),
-                            prefixIcon: Icon(Icons.email_outlined,),
+                            prefixIcon: Icon(
+                              Icons.email_outlined,
+                            ),
                             focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(width: 2.0,)
-                            )
-                        ),
+                                borderSide: BorderSide(
+                              width: 2.0,
+                            ))),
                       ),
-                      const SizedBox(height: tFormHeight-20,),
+                      const SizedBox(
+                        height: tFormHeight - 20,
+                      ),
                       TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                             label: Text(tPassword),
-                            prefixIcon: Icon(Icons.fingerprint,),
+                            prefixIcon: Icon(
+                              Icons.fingerprint,
+                            ),
                             focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(width: 2.0,)
-                            )
-                        ),
+                                borderSide: BorderSide(
+                              width: 2.0,
+                            ))),
                       ),
-                      const SizedBox(height: tFormHeight-20,),
+                      const SizedBox(
+                        height: tFormHeight - 20,
+                      ),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {
-
-                          },
-                          child: Text(tRegister.toUpperCase()),
+                          onPressed: () {},
                           style: ElevatedButton.styleFrom(
                               elevation: 0,
-                              shape: RoundedRectangleBorder(),
-                              padding: EdgeInsets.symmetric(vertical: tButtonHeight)),
+                              shape: const RoundedRectangleBorder(),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: tButtonHeight)),
+                          child: Text(tRegister.toUpperCase()),
                         ),
                       ),
                     ],

@@ -5,62 +5,62 @@ class ChatTextTheme {
   ChatTextTheme._();
 
   static TextTheme lightTextTheme = TextTheme(
-    headline1: GoogleFonts.montserrat(
+    displayLarge: GoogleFonts.montserrat(
       fontSize: 28.0,
       fontWeight: FontWeight.bold,
     ),
-    headline2: GoogleFonts.montserrat(
+    displayMedium: GoogleFonts.montserrat(
       fontSize: 24.0,
       fontWeight: FontWeight.w700,
     ),
-    headline3: GoogleFonts.poppins(
+    displaySmall: GoogleFonts.poppins(
       fontSize: 24.0,
       fontWeight: FontWeight.w700,
     ),
-    headline4: GoogleFonts.poppins(
+    headlineMedium: GoogleFonts.poppins(
       fontSize: 16.0,
       fontWeight: FontWeight.w600,
     ),
-    headline6: GoogleFonts.poppins(
+    titleLarge: GoogleFonts.poppins(
       fontSize: 14.0,
       fontWeight: FontWeight.w600,
     ),
-    bodyText1: GoogleFonts.poppins(
+    bodyLarge: GoogleFonts.poppins(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
     ),
-    bodyText2: GoogleFonts.poppins(
+    bodyMedium: GoogleFonts.poppins(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
     ),
   );
 
   static TextTheme darkTextTheme = TextTheme(
-    headline1: GoogleFonts.montserrat(
+    displayLarge: GoogleFonts.montserrat(
       fontSize: 20.0,
       fontWeight: FontWeight.bold,
     ),
-    headline2: GoogleFonts.montserrat(
+    displayMedium: GoogleFonts.montserrat(
       fontSize: 24.0,
       fontWeight: FontWeight.w700,
     ),
-    headline3: GoogleFonts.poppins(
+    displaySmall: GoogleFonts.poppins(
       fontSize: 24.0,
       fontWeight: FontWeight.w700,
     ),
-    headline4: GoogleFonts.poppins(
+    headlineMedium: GoogleFonts.poppins(
       fontSize: 16.0,
       fontWeight: FontWeight.w600,
     ),
-    headline6: GoogleFonts.poppins(
+    titleLarge: GoogleFonts.poppins(
       fontSize: 14.0,
       fontWeight: FontWeight.w600,
     ),
-    bodyText1: GoogleFonts.poppins(
+    bodyLarge: GoogleFonts.poppins(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
     ),
-    bodyText2: GoogleFonts.poppins(
+    bodyMedium: GoogleFonts.poppins(
       fontSize: 14.0,
       fontWeight: FontWeight.normal,
     ),

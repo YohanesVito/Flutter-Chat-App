@@ -1,8 +1,5 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants/colors.dart';
-import 'package:flutter_chat_app/screens/login_screen.dart';
-import 'package:flutter_chat_app/screens/register_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MainTabScreen extends StatefulWidget {
@@ -47,7 +44,7 @@ class _MainTabScreenState extends State<MainTabScreen> {
                             },
                             child: AnimatedContainer(
                               duration: const Duration(milliseconds: 300),
-                              margin: EdgeInsets.all(5),
+                              margin: const EdgeInsets.all(5),
                               width: 80,
                               height: 45,
                               decoration: BoxDecoration(
@@ -59,8 +56,8 @@ class _MainTabScreenState extends State<MainTabScreen> {
                                       : BorderRadius.circular(10),
                                   border: current == index
                                       ? Border.all(
-                                          color:
-                                              lightColorScheme.onPrimaryContainer,
+                                          color: lightColorScheme
+                                              .onPrimaryContainer,
                                           width: 2)
                                       : null),
                               child: Center(
@@ -76,6 +73,7 @@ class _MainTabScreenState extends State<MainTabScreen> {
                             ),
                           ),
                           Visibility(
+                            visible: current == index,
                             child: Container(
                               width: 5,
                               height: 5,
@@ -83,7 +81,6 @@ class _MainTabScreenState extends State<MainTabScreen> {
                                 shape: BoxShape.circle,
                               ),
                             ),
-                            visible: current == index,
                           )
                         ],
                       );
@@ -91,7 +88,6 @@ class _MainTabScreenState extends State<MainTabScreen> {
               ),
 
               //body
-
             ],
           ),
         ),
