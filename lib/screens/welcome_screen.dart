@@ -13,21 +13,12 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  //navigation
-  void navigateToMainScreen(BuildContext context) {
+
+  void navigateToTabScreen(BuildContext context) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => const TabLayoutScreen(),
-      ),
-    );
-  }
-
-  void navigateToRegisterScreen(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const RegisterScreen(),
       ),
     );
   }
@@ -63,7 +54,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      navigateToRegisterScreen(context);
+                      navigateToTabScreen(context);
                     },
                     style: ElevatedButton.styleFrom(
                         elevation: 0,

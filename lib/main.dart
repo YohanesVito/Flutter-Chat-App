@@ -3,7 +3,6 @@ import 'package:flutter_chat_app/providers/user_provider.dart';
 import 'package:flutter_chat_app/screens/chat_screen.dart';
 import 'package:flutter_chat_app/screens/contact_screen.dart';
 import 'package:flutter_chat_app/screens/login_screen.dart';
-import 'package:flutter_chat_app/screens/main_tab_screen.dart';
 import 'package:flutter_chat_app/screens/profile_screen.dart';
 import 'package:flutter_chat_app/screens/register_screen.dart';
 import 'package:flutter_chat_app/screens/tab_layout_screen.dart';
@@ -29,8 +28,8 @@ class ChatApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       darkTheme: ThemeData(
         colorScheme: darkColorScheme,
-        textTheme: TextTheme(
-          bodyText1: TextStyle(
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(
             fontFamily: 'Poppins',
           ),
         ),
@@ -38,8 +37,8 @@ class ChatApp extends StatelessWidget {
       ),
       theme: ThemeData(
         colorScheme: lightColorScheme,
-        textTheme: TextTheme(
-          bodyText1: TextStyle(
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(
             fontFamily: 'Poppins',
           ),
         ),
