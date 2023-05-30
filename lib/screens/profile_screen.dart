@@ -4,6 +4,7 @@ import 'package:flutter_chat_app/constants/sizes.dart';
 import 'package:flutter_chat_app/constants/text_string.dart';
 import 'package:flutter_chat_app/screens/contact_screen.dart';
 import 'package:flutter_chat_app/screens/login_screen.dart';
+import 'package:flutter_chat_app/screens/tab_layout_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -28,7 +29,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const LoginScreen(),
+        builder: (context) => const TabLayoutScreen(),
       ),
     );
   }

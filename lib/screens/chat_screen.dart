@@ -116,6 +116,12 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                 ),
                 IconButton(
+                  icon: const Icon(Icons.mic),
+                  onPressed: () {
+                    _openGallery();
+                  },
+                ),
+                IconButton(
                   icon: const Icon(Icons.photo),
                   onPressed: () {
                     _openGallery();

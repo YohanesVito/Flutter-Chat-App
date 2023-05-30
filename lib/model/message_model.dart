@@ -49,6 +49,11 @@ List<Message> messages = [
     date: DateTime.now().subtract(const Duration(days: 5, minutes: 35)),
     isSentByMe: true,
   ),
+  Message(
+    text: 'Hello there',
+    date: DateTime.now().subtract(const Duration(days: 5, minutes: 35)),
+    isSentByMe: true,
+  ),
 ].reversed.toList();
 
 class Message {
