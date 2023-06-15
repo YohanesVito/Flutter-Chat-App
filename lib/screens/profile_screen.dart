@@ -1,10 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_app/constants/image_strings.dart';
 import 'package:flutter_chat_app/constants/sizes.dart';
 import 'package:flutter_chat_app/constants/text_string.dart';
+import 'package:flutter_chat_app/providers/auth_provider.dart';
 import 'package:flutter_chat_app/screens/contact_screen.dart';
-import 'package:flutter_chat_app/screens/login_screen.dart';
 import 'package:flutter_chat_app/screens/tab_layout_screen.dart';
+import 'package:flutter_chat_app/service/firebase_service.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
+
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -23,6 +28,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ),
     );
   }
+
 
   //navigation
   void navigateToLoginScreen(BuildContext context) {
@@ -49,65 +55,73 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(tDefaultSize),
-          child: Column(
-            children: [
-              SizedBox(
-                width: 200,
-                height: 200,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(200),
-                  child: const Image(image: AssetImage(tProfileImage)),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                tProfileHeading,
-                style: Theme.of(context).textTheme.headlineLarge,
-              ),
-              Text(
-                tProfileSubHeading,
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              SizedBox(
-                width: 200,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    side: BorderSide.none,
-                    shape: const StadiumBorder(),
-                  ),
-                  child: Text(
-                    tEditProfile.toUpperCase(),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              SizedBox(
-                  width: 200,
-                  child: OutlinedButton(
-                      onPressed: () {
-                        navigateToLoginScreen(context);
-                      },
-                      style: OutlinedButton.styleFrom(
-                        side: BorderSide.none,
-                        shape: const StadiumBorder(),
+          child: Consumer<AuthProvider>(
+            builder: (context, authProvider, _) {
+              return Column(
+                children: [
+                  SizedBox(
+                    width: 200,
+                    height: 200,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(200),
+                      child: FirebaseAuth.instance.currentUser!.photoURL != null
+                          ? Image.network(
+                        FirebaseAuth.instance.currentUser!.photoURL!,
+                        fit: BoxFit.cover,
+                      )
+                          : FadeInImage.assetNetwork(
+                        image: 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
+                        fit: BoxFit.cover,
+                        placeholder: '',
                       ),
-                      child: Text(tLogout.toUpperCase()))),
-              const SizedBox(
-                height: 30,
-              ),
-              const Divider(),
-              const SizedBox(
-                height: 10,
-              )
-            ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    FirebaseAuth.instance.currentUser!.email!.substring(0, FirebaseAuth.instance.currentUser!.email!.indexOf('@')),
+                    style: Theme.of(context).textTheme.headlineLarge,
+                  ),
+                  Text(
+                    FirebaseAuth.instance.currentUser!.email!,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                      width: 200,
+                      child: OutlinedButton(
+                          onPressed: () {
+                            navigateToLoginScreen(context);
+                            FirebaseAuth.instance.signOut();
+                            GoogleSignIn().signOut();
+                            FirebaseService().signOut(context);
+                            Fluttertoast.showToast(
+                                msg: "Logout Berhasil",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.CENTER,
+                                timeInSecForIosWeb: 1,
+                                textColor: Colors.white,
+                                fontSize: 16.0
+                            );
+                          },
+                          style: OutlinedButton.styleFrom(
+                            side: BorderSide.none,
+                            shape: const StadiumBorder(),
+                          ),
+                          child: Text(tLogout.toUpperCase()))),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Divider(),
+                  const SizedBox(
+                    height: 10,
+                  )
+                ],
+              );
+            },
           ),
         ),
       ),

@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/constants/image_strings.dart';
 import 'package:flutter_chat_app/constants/sizes.dart';
 import 'package:flutter_chat_app/constants/text_string.dart';
+import 'package:flutter_chat_app/service/auth_service.dart';
+import 'package:flutter_chat_app/service/firebase_service.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/auth_provider.dart';
 import 'contact_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -77,7 +82,10 @@ class _LoginScreenState extends State<LoginScreen> {
               style: OutlinedButton.styleFrom(
                   shape: const RoundedRectangleBorder(),
                   padding: EdgeInsets.symmetric(vertical: tButtonHeight)),
-              onPressed: () {},
+              onPressed: () async {
+                await AuthService().signInWithGoogle(context);
+                navigateToContactScreen(context);
+              },
               label: Text(tSignInWithGoogle)),
         ),
         const SizedBox(
@@ -118,10 +126,14 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           TextFormField(
             decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.person_outline_outlined),
+                prefixIcon: Icon(Icons.email_outlined),
                 labelText: tEmail,
                 hintText: tEmail,
                 border: OutlineInputBorder()),
+            onChanged: (value) {
+              // Update the email value using the provider
+              Provider.of<AuthProvider>(context, listen: false).setEmail(value);
+            },
           ),
           const SizedBox(
             height: tFormHeight - 20,
@@ -141,6 +153,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         : Icons.visibility_off,
                   ),
                 )),
+            onChanged: (value) {
+              // Update the password value using the provider
+              Provider.of<AuthProvider>(context, listen: false).setPassword(value);
+            },
           ),
           const SizedBox(
             height: tFormHeight - 20,
@@ -153,8 +169,50 @@ class _LoginScreenState extends State<LoginScreen> {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () {
-                navigateToContactScreen(context);
+              onPressed: () async {
+                // Get the email and password from the provider
+                final authProvider = Provider.of<AuthProvider>(context, listen: false);
+                String emailAddress = authProvider.email;
+                String password = authProvider.password;
+
+                // Validate the email and password
+                if (emailAddress.isNotEmpty && password.isNotEmpty) {
+                  // Call the sign-in function with the entered email and password
+                  bool success = await FirebaseService().signInWithEmailAndPassword(context);
+
+                  if (success) {
+                    // Handle the case when sign-in is successful, e.g., navigate to the next screen
+                    Fluttertoast.showToast(
+                        msg: "Login Berhasil",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.CENTER,
+                        timeInSecForIosWeb: 1,
+                        textColor: Colors.white,
+                        fontSize: 16.0
+                    );
+                    navigateToContactScreen(context);
+                  } else {
+                    // Handle the case when sign-in fails, e.g., display an error message
+                    Fluttertoast.showToast(
+                        msg: "Login Gagal",
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.CENTER,
+                        timeInSecForIosWeb: 1,
+                        textColor: Colors.white,
+                        fontSize: 16.0
+                    );
+                  }
+                } else {
+                  // Handle the case when the email or password is empty
+                  Fluttertoast.showToast(
+                      msg: "Semua kolom wajib diisi!",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.CENTER,
+                      timeInSecForIosWeb: 1,
+                      textColor: Colors.white,
+                      fontSize: 16.0
+                  );
+                }
               },
               style: ElevatedButton.styleFrom(
                   elevation: 0,
