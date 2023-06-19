@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "52990440689-b9412a2ugroiju4t2akv7nk7fjgdqbv5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yohanesvito.chatapp.flutter_chat_app",
+            "certificate_hash": "9ba792ba04e0236ba995a69e7139bc5065594be2"
+          }
+        },
+        {
           "client_id": "52990440689-bbqbh9b29f03e85turaf92ppn77qj0f5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
